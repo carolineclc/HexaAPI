@@ -21,3 +21,29 @@ class ClientesBase(BaseModel):
 
     class Config:
         orm_mode = True
+
+class EnderecosBase(BaseModel):
+    id_endereco: int
+    CEP: int = Field(
+        title="CEP do endereco",
+        example=112233
+    )
+    rua: Optional[str] = Field(
+        title="Rua do endereco",
+        max_length=25,
+        example="av Brasil"
+    )
+    numero: Optional[int] = Field(
+        title="Numero do endereco",
+        example="123"
+    )
+
+    complemento: Optional[int] = Field(
+        title="complemento do endereco",
+        example="123"
+    )
+
+    class Config:
+        orm_mode = True
+
+

@@ -26,3 +26,9 @@ def get_db():
 async def get_clientes(db : Session = Depends(get_db)):
     clientes = crud.get_clientes(db)
     return clientes
+
+@app.get("/enderecos/", response_model=list[schemas.EnderecosBase], status_code=200, tags=["Enderecos"], 
+         description="Retorna a lista de todos os enderecos, com seus respectivos atributos")
+async def get_enderecos(db : Session = Depends(get_db)):
+    enderecos = crud.get_enderecos(db)
+    return enderecos
