@@ -47,3 +47,43 @@ class EnderecosBase(BaseModel):
         orm_mode = True
 
 
+class CarrinhosBase(BaseModel):
+    id_carrinho: int
+    pago: float = Field(
+        example=1
+    )
+    entregue: float = Field(
+        example=1
+    )
+    finalizado: float = Field(
+        example=1
+    )
+
+    frete: float = Field(
+        example=1.2
+    )
+    class Config:
+        orm_mode = True
+
+class ItensBase(BaseModel):
+    id_item: int
+    nome: str = Field(
+        example="nome do set/item"
+    )
+    valor: float = Field(
+        example=2.3
+    )
+    descricao: str = Field(
+        example="descricao do set ou item"
+    )
+    class Config:
+        orm_mode = True
+
+
+class CarrinhosItensBase(BaseModel):
+    id_carrinhoItem : int
+
+    feito : int
+
+    class Config:
+        orm_mode = True

@@ -32,3 +32,21 @@ async def get_clientes(db : Session = Depends(get_db)):
 async def get_enderecos(db : Session = Depends(get_db)):
     enderecos = crud.get_enderecos(db)
     return enderecos
+
+@app.get("/carrinhos/", response_model=list[schemas.CarrinhosBase], status_code=200, tags=["Carrinhos"], 
+         description="Retorna a lista de todos os carrinhos, com seus respectivos atributos")
+async def get_carrinhos(db : Session = Depends(get_db)):
+    carrinhos = crud.get_carrinhos(db)
+    return carrinhos
+
+@app.get("/itens/", response_model=list[schemas.ItensBase], status_code=200, tags=["Itens"], 
+         description="Retorna a lista de todos os itens, com seus respectivos atributos")
+async def get_itens(db : Session = Depends(get_db)):
+    itens = crud.get_itens(db)
+    return itens
+
+@app.get("/carrinhoitens/", response_model=list[schemas.CarrinhosItensBase], status_code=200, tags=["CarrinhoItens"], 
+         description="Retorna a lista de todos os itens, com seus respectivos atributos")
+async def get_carrinhosItens(db : Session = Depends(get_db)):
+    carrinhoItens = crud.get_carrinho_itens(db)
+    return carrinhoItens
